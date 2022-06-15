@@ -10,26 +10,28 @@ pipeline {
                 git credentialsId: 'jenkis-gitlab', url: 'git@gitlab.com:oyedelemichael1/jenkins-app.git', branch: "main"
 
                 echo "pulled main"
+
+                sh 'ls'
             }
         }
 
-        stage('install dependensies'){
-            steps{
-                script{
-                    nodejs('node'){
-                        sh 'npm install'
-                    }
+        //stage('install dependensies'){
+          //  steps{
+            //    script{
+              //      nodejs('node'){
+                //        sh 'npm install'
+                  //  }
                     
-                }
-            }
+               // }
+            //}
             
-        }
-        stage('build-and-deploy'){
-            steps{
-                sh 'docker build -t node-app .'
-                sh 'docker run -p 3001:3001 node-app'
-            }
-        }
+      //  }
+        //stage('build-and-deploy'){
+        //    steps{
+        //        sh 'docker build -t node-app .'
+        //        sh 'docker run -p 3001:3001 node-app'
+        //    }
+        // }
        
         
         
