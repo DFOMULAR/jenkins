@@ -26,12 +26,12 @@ pipeline {
             }
             
         }
-        //stage('build-and-deploy'){
-        //    steps{
-        //        sh 'docker build -t node-app .'
-        //        sh 'docker run -p 3001:3001 node-app'
-        //    }
-        // }
+        stage('build-and-deploy'){
+            steps{
+                sh 'docker build -t node-app .'
+                sh 'docker run -d -p 3001:3001 node-app'
+            }
+         }
        
         
         
