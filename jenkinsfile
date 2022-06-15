@@ -15,17 +15,17 @@ pipeline {
             }
         }
 
-        //stage('install dependensies'){
-          //  steps{
-            //    script{
-              //      nodejs('node'){
-                //        sh 'npm install'
-                  //  }
+        stage('install dependensies'){
+            steps{
+                script{
+                    nodejs('node'){
+                        sh 'npm install'
+                    }
                     
-               // }
-            //}
+                }
+            }
             
-      //  }
+        }
         //stage('build-and-deploy'){
         //    steps{
         //        sh 'docker build -t node-app .'
