@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout Source') {
+            steps {
+                
+                // git credentialsId: '2016a166-9bb8-44e9-aa9d-811a86ef1519', url: 'git@gitlab.com:oyedelemichael1/simple-app.git', branch:'master'
+                git credentialsId: 'jenkis-gitlab', url: 'git@gitlab.com:oyedelemichael1/jenkins-app.git', branch: "${env.BRANCH_NAME}"
+
+                echo "pulled ${env.BRANCH_NAME}"
+            }
+        }
+
+        stage('install dependensies'){
+            steps{
+                script{
+                    nodejs('node'){
+                        sh 'npm install'
+                    }
+                    
+                }
+            }
+            
+        }
+        stage('build-and-deploy'){
+            steps{
+                sh 'docker build -t node-app .'
+                sh 'docker run -p 3001:3001 node-app'
+            }
+        }
+       
+        
+        
+    }
+}
