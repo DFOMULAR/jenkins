@@ -29,7 +29,8 @@ pipeline {
         stage('build-and-deploy'){
             steps{
                 sh 'docker build -t node-app .'
-                sh 'docker stop node-app'
+                //sh 'docker ps | grep -i node-app'
+                //sh 'docker stop node-app'
                 sh 'docker run --name node-app -d -p 3001:3000 node-app'
             }
          }
